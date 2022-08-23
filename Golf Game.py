@@ -1,4 +1,4 @@
-from lib2to3.pgen2.driver import Driver
+#from lib2to3.pgen2.driver import Driver
 from random import randint
 
 #function for the ball range
@@ -8,26 +8,25 @@ def golf_ball_range(short, long):
     return ball_range
 #the irons and drivers that you will be hitting with
 clubs = {"Driver": golf_ball_range(200, 260), "3-wood": golf_ball_range(180,235),
-         "Sand-Wedge": golf_ball_range(60,100)}
+        "8-iron": golf_ball_range(100,180),"Sand-Wedge": golf_ball_range(60,100),
+         "Chip-Shot": golf_ball_range(5,20)}
 
 course = {"Hole1": 339}
 
 #functions for hitting the ball
 
 def hitting_the_ball(iron):
-    for i in clubs:
-        if iron == i:
-            return clubs[i]()
+     return clubs[iron]()
     
 def on_the_green():
     print("You are on the green!")
     chance_of_winning = randint(1,4)
-    print(chance_of_winning)
-    thing = input()
+    print("Choose a number between 1 - 4 for your chance to putt it in: ")
     while True:
         thing = input()
         if int(thing) == chance_of_winning:
             print("You did it")
+            return
         else:
             print("Putt again")
 
@@ -52,8 +51,7 @@ print( "")
 
 
 print("Welcome to the Golf Game\n")
-print("Please Enter your name:")
-name = input()
+name = input("Please Enter your name: ")
 
 print("Welcome " + name + ", the first course you will play on is a 9 hole called Caleb's Caddy")
 print("\n")
@@ -63,6 +61,7 @@ cchole1 = 0
 distance = course["Hole1"]
 while distance > 20:
     which_club()
+    print("---------\n")
     choice = input()
     print("\n")
     cchole1 = hitting_the_ball(choice)
@@ -76,3 +75,6 @@ while distance > 20:
 
 print("\n")
 on_the_green()
+
+
+
